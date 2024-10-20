@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { NativeBaseProvider, Box, Heading, Input, Button, Avatar, HStack, Text, Spinner, useToast } from 'native-base';
+import { NativeBaseProvider, Box, Heading, Input, Button, Avatar, HStack,Spinner, useToast } from 'native-base';
 import ImagePicker from 'react-native-image-picker';
 import { firebase } from './firebaseConfig';
 
@@ -29,7 +29,7 @@ const ProfileScreen = () => {
   };
 
   const uploadAvatar = async (uri) => {
-    setLoading(true);  // Show the loading spinner
+    setLoading(true);
     const user = firebase.auth().currentUser;
     if (user) {
       try {
@@ -40,16 +40,16 @@ const ProfileScreen = () => {
         await user.updateProfile({ photoURL: avatarUrl });
 
         toast.show({
-          description: "Profile picture updated successfully!",
-          status: "success",
+          description: 'Profile picture updated successfully!',
+          status: 'success',
         });
       } catch (error) {
         toast.show({
-          description: "Error updating profile picture: " + error.message,
-          status: "error",
+          description: 'Error updating profile picture: ' + error.message,
+          status: 'error',
         });
       } finally {
-        setLoading(false);  // Hide the loading spinner
+        setLoading(false);
       }
     }
   };
